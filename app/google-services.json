@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "565222402778",
+    "firebase_url": "https://reference-app-demo.firebaseio.com",
+    "project_id": "reference-app-demo",
+    "storage_bucket": "reference-app-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565222402778:android:6cddb9cc7c845814",
+        "android_client_info": {
+          "package_name": "com.demo.reffappdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "565222402778-q75o757hg01tshhl2qs55cteham79pr2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv36NJzDudYzLch415crbA0R1FpnrxT8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565222402778-q75o757hg01tshhl2qs55cteham79pr2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
