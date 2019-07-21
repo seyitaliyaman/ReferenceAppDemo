@@ -1,7 +1,6 @@
 package com.demo.reffappdemo;
 
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 
 public class HomeListItem {
 
