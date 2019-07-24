@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.demo.reffappdemo.HomePage;
+import com.demo.reffappdemo.UserUI.Home;
 import com.demo.reffappdemo.Model.Users;
 import com.demo.reffappdemo.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,8 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -111,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     Log.e("giriş yapan uid",""+mAuth.getCurrentUser().getUid());
                     Toast.makeText(getApplicationContext(),"Giriş Yapıldı"+mAuth.getCurrentUser().getUid(),Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), HomePage.class);
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
                     startActivity(intent);
                     finish();
                 }else{

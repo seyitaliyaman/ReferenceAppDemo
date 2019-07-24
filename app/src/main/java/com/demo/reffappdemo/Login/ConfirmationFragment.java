@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.demo.reffappdemo.HomePage;
+import com.demo.reffappdemo.UserUI.HomePage;
 import com.demo.reffappdemo.Model.Users;
 import com.demo.reffappdemo.R;
 import com.demo.reffappdemo.Utils.UserRegisterInfo;
@@ -32,8 +31,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import java.util.concurrent.TimeUnit;
 
 
 public class ConfirmationFragment extends Fragment{

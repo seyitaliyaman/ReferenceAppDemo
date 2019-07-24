@@ -1,4 +1,4 @@
-package com.demo.reffappdemo;
+package com.demo.reffappdemo.UserUI;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.demo.reffappdemo.R;
 
 public class HomePage extends AppCompatActivity {
 

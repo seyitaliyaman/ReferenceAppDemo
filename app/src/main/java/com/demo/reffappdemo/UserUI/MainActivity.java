@@ -1,4 +1,4 @@
-package com.demo.reffappdemo;
+package com.demo.reffappdemo.UserUI;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.demo.reffappdemo.Login.LoginActivity;
+import com.demo.reffappdemo.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getBaseContext(),HomePage.class);
+                Intent i = new Intent(getBaseContext(),Home.class);
                 startActivity(i);
             }
         });
