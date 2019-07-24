@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    tools:context=".Login.LoginActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:textAlignment="center"
+            android:textSize="50dp"
+            android:layout_marginTop="90dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/font1"
+            android:text="Akıllı Davet" />
+
+        <EditText
+
+            android:id="@+id/usernameInput"
+            android:layout_width="211dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="180dp"
+            android:layout_marginLeft="94dp"
+            android:background="@drawable/round_corner"
+            android:hint="Kullanıcı adı veya Telefon"
+            android:textColorHint="#FFFFFF"
+            android:textAlignment="center"
+            />
+
+        <EditText
+            android:id="@+id/passwordInput"
+            android:inputType="textPassword"
+            android:layout_width="211dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="94dp"
+            android:hint="Şifre"
+            android:textAlignment="center"
+            android:textColorHint="#FFFFFF"
+            android:background="@drawable/round_corner" />
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="211dp"
+            android:layout_height="41dp"
+            android:layout_marginLeft="94dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/round_corner_button"
+            android:text="GİRİŞ"
+            android:textColor="#ffffff"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/createAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hesap Oluştur"
+                android:textSize="15dp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="80dp"/>
+
+            <TextView
+                android:id="@+id/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yardım"
+                android:textSize="15dp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="95dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

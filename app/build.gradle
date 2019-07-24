@@ -25,7 +25,28 @@ dependencies {
     testİmplementation 'junit:junit:4.12'
     androidTestİmplementation 'com.android.support.test:runner:1.0.2'
     androidTestİmplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //firebase
     implementation 'com.google.firebase:firebase-core:16.0.9'
+    implementation 'com.google.firebase:firebase-database:17.0.0'
+    implementation 'com.firebaseui:firebase-ui-auth:3.3.1'
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
+
+    //support design
+    implementation 'com.android.support:design:28.0.0'
+
+    //navigations
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0'
+    implementation 'android.arch.navigation:navigation-ui:1.0.0'
+
+    //greenrobot eventbus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+
+
+
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'

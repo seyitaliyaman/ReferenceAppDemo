@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    tools:context=".Login.ConfirmationFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:textAlignment="center"
+            android:textSize="40dp"
+            android:layout_marginTop="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/font1"
+            android:text="Hesap Oluştur" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="140dp"
+            android:text="Şu numaraya gönderdiğimiz 6 haneli kodunu girin:"/>
+        <TextView
+            android:id="@+id/sendNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="15dp"
+            android:text="123456778"/>
+
+        <EditText
+
+            android:id="@+id/confirmationCode"
+            android:layout_width="211dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="94dp"
+            android:background="@drawable/round_corner"
+            android:hint="Doğrulama Kodu"
+            android:textColorHint="#FFFFFF"
+            android:textAlignment="center"
+            android:maxLength="6"
+            android:inputType="number"
+            />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="211dp"
+            android:layout_height="41dp"
+            android:layout_marginLeft="94dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/round_corner_button"
+            android:text="TAMAMLA"
+            android:textColor="#ffffff"/>
+
+
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

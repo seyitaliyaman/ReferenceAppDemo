@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    tools:context=".Login.RegisterActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/registerRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:textAlignment="center"
+                android:textSize="40dp"
+                android:layout_marginTop="80dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:fontFamily="@font/font1"
+                android:text="Hesap Oluştur" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+
+            </LinearLayout>
+
+            <EditText
+
+                android:id="@+id/fullname"
+                android:layout_width="211dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="160dp"
+                android:layout_marginLeft="94dp"
+                android:background="@drawable/round_corner"
+                android:hint="Ad ve Soyad"
+                android:inputType="text"
+                android:textColorHint="#FFFFFF"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="211dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="94dp"
+                android:background="@drawable/round_corner"
+                android:hint="Kullanıcı Adı"
+                android:inputType="text"
+                android:textColorHint="#FFFFFF"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="211dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="94dp"
+                android:background="@drawable/round_corner"
+                android:hint="E-Mail"
+                android:inputType="textEmailAddress"
+                android:textColorHint="#FFFFFF"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="211dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="94dp"
+                android:background="@drawable/round_corner"
+                android:inputType="textPassword"
+                android:maxLength="13"
+                android:hint="Şifre"
+                android:textColorHint="#FFFFFF"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                />
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="211dp"
+                android:layout_height="41dp"
+                android:layout_marginLeft="94dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/round_corner_button"
+                android:text="İLERİ"
+                android:textColor="#ffffff"/>
+
+
+
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/registerContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </FrameLayout>
+
+
+</android.support.constraint.ConstraintLayout>
