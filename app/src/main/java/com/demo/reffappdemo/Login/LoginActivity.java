@@ -19,9 +19,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database. DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mRef = FirebaseDatabase.getInstance().getReference();
+
+        setupAuthListener();
 
 
         createAccount.setOnClickListener(new View.OnClickListener() {
@@ -109,15 +113,45 @@ public class LoginActivity extends AppCompatActivity {
 
                     Log.e("giriş yapan uid",""+mAuth.getCurrentUser().getUid());
                     Toast.makeText(getApplicationContext(),"Giriş Yapıldı"+mAuth.getCurrentUser().getUid(),Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
-                    intent.putExtra("id",mAuth.getCurrentUser().getUid());
-                    startActivity(intent);
-                    finish();
                 }else{
                     Toast.makeText(getApplicationContext(),"Kullanıcı adı veya şifre yanlış. Tekrar deneyin!",Toast.LENGTH_LONG).show();
                 }
             }
         });
 
+    }
+
+    private void setupAuthListener(){
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                if(user!=null){
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.putExtra("id",mAuth.getCurrentUser().getUid());
+                    startActivity(intent);
+                    finish();
+                }else{
+
+                }
+            }
+        };
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mAuthListener!=null){
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }

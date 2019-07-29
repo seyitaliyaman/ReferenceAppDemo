@@ -1,8 +1,12 @@
 package com.demo.reffappdemo.UserUI;
 
+import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +15,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.demo.reffappdemo.R;
+import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListArrayAdapter  extends ArrayAdapter<HomeListItem> {
+public class ListArrayAdapter  extends ArrayAdapter<HomeListItem>  {
 
     private List<HomeListItem> cardList = new ArrayList<HomeListItem>();
 
@@ -63,10 +69,14 @@ public class ListArrayAdapter  extends ArrayAdapter<HomeListItem> {
             viewHolder = (ViewHolder)row.getTag();
         }
         HomeListItem card = getItem(position);
-        viewHolder.img.setImageDrawable(card.getImg());
+        //Log.e("deneme4 ",""+Uri.parse(card.getView()));
+        Picasso.get().load(Uri.parse(card.getView())).resize(600,500).into(viewHolder.img);
+        //viewHolder.img.setImageURI(Uri.parse(card.getView()));
+        //viewHolder.img.setImageDrawable(card.getImg());
         viewHolder.text1.setText(card.getIsim());
         viewHolder.text2.setText(card.getIlce());
         viewHolder.text3.setText(card.getKampanya());
+
         return row;
     }
 

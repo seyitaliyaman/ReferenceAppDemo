@@ -6,14 +6,14 @@ public class Kampanya {
     private String kampanyaAd;
     private String kampanyaId;
     private String kampanyaInfo;
-    private String kampanyaSure;
+    private String kampanyaSüre;
 
-    public Kampanya(String fotoURL, String kampanyaAd, String kampanyaId, String kampanyaInfo, String kampanyaSure) {
+    public Kampanya(String fotoURL, String kampanyaAd, String kampanyaId, String kampanyaInfo, String kampanyaSüre) {
         this.fotoURL = fotoURL;
         this.kampanyaAd = kampanyaAd;
         this.kampanyaId = kampanyaId;
         this.kampanyaInfo = kampanyaInfo;
-        this.kampanyaSure = kampanyaSure;
+        this.kampanyaSüre = kampanyaSüre;
     }
 
     public Kampanya(){}
@@ -50,11 +50,11 @@ public class Kampanya {
         this.kampanyaInfo = kampanyaInfo;
     }
 
-    public String getKampanyaSure() {
-        return kampanyaSure;
+    public String getKampanyaSüre() {
+        return kampanyaSüre;
     }
 
-    public void setKampanyaSure(String kampanyaSure) {
-        this.kampanyaSure = kampanyaSure;
+    public void setKampanyaSüre(String kampanyaSüre) {
+        this.kampanyaSüre = kampanyaSüre;
     }
 }

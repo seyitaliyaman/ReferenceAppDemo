@@ -156,7 +156,9 @@ public class HomeFrag extends Fragment {
 
                 for (int i = 0; i < rows.size(); i++) {
 
-                    HomeListItem card = new HomeListItem(getContext().getDrawable(R.drawable.images),rows.get(i).getKampanyaAd(),"Zeytinburnu",rows.get(i).getKampanyaInfo());
+                    Log.e("gelen url : ",""+rows.get(i).getFotoURL());
+
+                    HomeListItem card = new HomeListItem(rows.get(i).getFotoURL(),rows.get(i).getKampanyaAd(),rows.get(i).getKampanyaId(),rows.get(i).getKampanyaInfo(),rows.get(i).getKampanyaSüre());
                     adapter.add(card);
                     //list.add(card);
                 }
@@ -177,8 +179,13 @@ public class HomeFrag extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 String isim = adapter.getItem(i).getIsim();
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("key",adapter.getItem(i));
                 Intent intent = new Intent(getContext(),FirmaSayfasi.class);
                 intent.putExtra("isim",isim);
+                intent.putExtras(bundle);
+
                 startActivity(intent);
 
 

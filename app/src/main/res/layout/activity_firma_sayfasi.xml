@@ -25,11 +25,11 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
+                android:id="@+id/kampanyaView"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop"
-                android:src="@drawable/images1"
                 app:layout_collapseMode="parallax" />
            <!-- <android.support.v4.view.ViewPager
                 android:id="@+id/imagepager"
@@ -103,6 +103,7 @@
 
 
                     <TextView
+                        android:id="@+id/kampanyaAd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="12dp"
@@ -113,7 +114,7 @@
 
 
                     <TextView
-                        android:id="@+id/kaciklama"
+                        android:id="@+id/kampanyaInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="12dp"
@@ -133,6 +134,7 @@
                             app:srcCompat="@mipmap/clock" />
 
                         <TextView
+                            android:id="@+id/kampanyaSüre"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:lineSpacingMultiplier="1.5"

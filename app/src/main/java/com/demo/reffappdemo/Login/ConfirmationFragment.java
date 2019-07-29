@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.demo.reffappdemo.UserUI.HomePage;
+import com.demo.reffappdemo.UserUI.Home;
 import com.demo.reffappdemo.Model.Users;
 import com.demo.reffappdemo.R;
 import com.demo.reffappdemo.Utils.UserRegisterInfo;
@@ -97,7 +97,7 @@ public class ConfirmationFragment extends Fragment{
                                         if(task.isSuccessful()){
 
                                             Toast.makeText(getContext(),"Databaseye kaydedildi",Toast.LENGTH_LONG).show();
-                                            Intent intent = new Intent(getContext(), HomePage.class);
+                                            Intent intent = new Intent(getContext(), Home.class);
                                             startActivity(intent);
                                             getActivity().finish();
                                         }else{
