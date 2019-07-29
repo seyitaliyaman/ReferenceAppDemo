@@ -11,6 +11,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#EEFFEBEE"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="-4dp"
         tools:layout_editor_absoluteY="0dp">
@@ -29,7 +30,9 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="Ara" />
+            android:text="Ara"
+            android:background="@drawable/search_button"
+            android:src="@drawable/campaign_web"/>
     </LinearLayout>
 
     <ListView

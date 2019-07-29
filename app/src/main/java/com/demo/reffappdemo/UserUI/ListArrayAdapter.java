@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListArrayAdapter  extends ArrayAdapter<HomeListItem> {
-    private static final String TAG = "CardArrayAdapter";
+
     private List<HomeListItem> cardList = new ArrayList<HomeListItem>();
 
     static class ViewHolder {

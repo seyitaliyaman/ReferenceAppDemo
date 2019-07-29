@@ -110,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e("giriş yapan uid",""+mAuth.getCurrentUser().getUid());
                     Toast.makeText(getApplicationContext(),"Giriş Yapıldı"+mAuth.getCurrentUser().getUid(),Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.putExtra("id",mAuth.getCurrentUser().getUid());
                     startActivity(intent);
                     finish();
                 }else{

@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,19 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.demo.reffappdemo.Model.Kampanya;
 import com.demo.reffappdemo.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFrag extends Fragment {
 
@@ -26,6 +40,14 @@ public class HomeFrag extends Fragment {
     private String[] sektors = new String[9];
     private String[] ilceler = new String[40];
     private ListArrayAdapter adapter;
+
+    private DatabaseReference mDatabase;
+    private DatabaseReference mKampanyaRef;
+    private ChildEventListener mKampanyaListener;
+
+    private FirebaseUser user;
+
+    private List<Kampanya> rows = new ArrayList<>();
 
 
     public HomeFrag() {
@@ -37,6 +59,9 @@ public class HomeFrag extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mKampanyaRef = FirebaseDatabase.getInstance().getReference("Kampanya");
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
     }
 
@@ -50,6 +75,8 @@ public class HomeFrag extends Fragment {
         sektor = view.findViewById(R.id.spinner);
         ilce = view.findViewById(R.id.spinner2);
         listView = view.findViewById(R.id.listView);
+
+        //String uid = getArguments().getString("edt");
 
         sektors[0] = "Sektör Seçiniz";
         sektors[1] = "Hepsi";
@@ -108,7 +135,97 @@ public class HomeFrag extends Fragment {
         ArrayAdapter<String> ilceadp = new SpinnerAdapter(getContext(),android.R.layout.simple_spinner_dropdown_item,ilceler);
         ilce.setAdapter(ilceadp);
 
+
+
+        //rows = mDatabase.child("Kampanya").
+
         //List<HomeListItem> list = new ArrayList<>();
+        mKampanyaRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Log.e("tag","taki");
+                for (DataSnapshot kamp:dataSnapshot.getChildren()){
+                    Kampanya kampanya = kamp.getValue(Kampanya.class);
+                    rows.add(kampanya);
+
+                    Log.e("tag","taki");
+                }
+
+                adapter = new ListArrayAdapter(getContext(),R.layout.list_item);
+
+                for (int i = 0; i < rows.size(); i++) {
+
+                    HomeListItem card = new HomeListItem(getContext().getDrawable(R.drawable.images),rows.get(i).getKampanyaAd(),"Zeytinburnu",rows.get(i).getKampanyaInfo());
+                    adapter.add(card);
+                    //list.add(card);
+                }
+                listView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Log.e("df",""+rows.size());
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String isim = adapter.getItem(i).getIsim();
+                Intent intent = new Intent(getContext(),FirmaSayfasi.class);
+                intent.putExtra("isim",isim);
+                startActivity(intent);
+
+
+            }
+        });
+
+
+        return view;
+
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        /*ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Kampanya kampanya = dataSnapshot.getValue(Kampanya.class);
+                rows.add(kampanya);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+        mKampanyaRef.addChildEventListener(childEventListener);
+
+        mKampanyaListener = childEventListener;
 
         listView.addHeaderView(new View(getContext()));
         listView.addFooterView(new View(getContext()));
@@ -127,16 +244,13 @@ public class HomeFrag extends Fragment {
 
         adapter = new ListArrayAdapter(getContext(),R.layout.list_item);
 
-        for (int i = 0; i < 10; i++) {
-            HomeListItem card = new HomeListItem(getContext().getDrawable(R.drawable.images),"DenemeRestorant","Zeytinburnu","Sağ kola alana sol kola bedava!");
+        for (int i = 0; i < rows.size(); i++) {
+
+            HomeListItem card = new HomeListItem(getContext().getDrawable(R.drawable.images),rows.get(i).getKampanyaAd(),"Zeytinburnu",rows.get(i).getKampanyaInfo());
             adapter.add(card);
             //list.add(card);
         }
-        listView.setAdapter(adapter);
-
-
-
-        return view;
+        listView.setAdapter(adapter);*/
 
 
     }

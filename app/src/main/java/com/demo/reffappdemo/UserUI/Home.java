@@ -39,10 +39,21 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        String id = getIntent().getStringExtra("id");
+
+        Bundle bundle = new Bundle();
+        bundle.putString("edt", id);
+        // set Fragmentclass Arguments
+        HomeFrag frag= new HomeFrag();
+        frag.setArguments(bundle);
+
         getSupportFragmentManager().beginTransaction().replace(R.id.container,new HomeFrag()).commit();
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
     }
 
 }
