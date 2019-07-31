@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.demo.reffappdemo">
 
-    <uses-permission android:name="android.permission.INTERNET">
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
-    </uses-permission>
+
 
     <application
         android:allowBackup="true"
@@ -13,22 +13,52 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserUI.FirmaSayfasi"
-            android:theme="@style/AppTheme.NoActionBar">
 
-        </activity>
+
+
+
+
+
+        <activity android:name=".KampanyaPaylas"
+            android:theme="@style/AppTheme.Popups"></activity>
+
+        <activity
+            android:name=".UserUI.FirmaSayfasi"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".UserUI.Home"
             android:label="@string/title_activity_home" />
-        <activity android:name=".UserUI.HomePage" />
+        <activity android:name=".UserUI.HomePage">
+        </activity>
         <activity android:name=".UserUI.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.akillidavet.com"
+                    android:scheme="http" />
+
+                <data
+                    android:host="akillidavet.com"
+                    android:scheme="http" />
+
+                <data
+                    android:host="www.akillidavet.com"
+                    android:scheme="https" />
+
+                <data
+                    android:host="akillidavet.com"
+                    android:scheme="https" />
+
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,9 +66,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Login.RegisterActivity">
-        </activity>
+        <activity android:name=".Login.RegisterActivity"></activity>
     </application>
+
 
 </manifest>

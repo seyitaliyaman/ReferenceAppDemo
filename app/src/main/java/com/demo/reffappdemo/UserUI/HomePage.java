@@ -1,6 +1,7 @@
 package com.demo.reffappdemo.UserUI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -101,6 +102,13 @@ public class HomePage extends AppCompatActivity {
             adapter.add(card);
         }
         listView.setAdapter(adapter);
+
+        Intent intent = new Intent("com.demo.reffappdemo");
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        Bundle bundle = new Bundle();
+        bundle.putString("msg_from_browser", "Launched from Browser");
+        intent.putExtras(bundle);
 
     }
 

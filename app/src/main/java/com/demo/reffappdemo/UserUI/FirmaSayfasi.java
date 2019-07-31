@@ -1,5 +1,6 @@
 package com.demo.reffappdemo.UserUI;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.demo.reffappdemo.KampanyaPaylas;
 import com.demo.reffappdemo.R;
 import com.squareup.picasso.Picasso;
 
@@ -71,6 +73,8 @@ public class FirmaSayfasi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Paylaşma Seçenekleri Yazılacak
+                Intent i = new Intent(getBaseContext(), KampanyaPaylas.class);
+                startActivity(i);
             }
         });
 

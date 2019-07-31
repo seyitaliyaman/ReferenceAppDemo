@@ -8,7 +8,7 @@ public class Firma {
     private String sektor;
     private String telefon;
 
-    public Firma(String adres, String firma, String ilce, String sektor, String telefon) {
+    public Firma(String adres, String firma, String ilce, String sektor , String telefon) {
         this.adres = adres;
         this.firma = firma;
         this.ilce = ilce;
