@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.demo.reffappdemo.Model.Firma;
 import com.demo.reffappdemo.Model.Kampanya;
 import com.demo.reffappdemo.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,10 +28,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HomeFrag extends Fragment {
 
@@ -48,6 +52,12 @@ public class HomeFrag extends Fragment {
     private FirebaseUser user;
 
     private List<Kampanya> rows = new ArrayList<>();
+
+    //List<String> foto = new ArrayList<>();
+    //List<String> firmilce = new ArrayList<>();
+
+    String foto = "";
+    String firmilce = "";
 
 
     public HomeFrag() {
@@ -157,12 +167,80 @@ public class HomeFrag extends Fragment {
                 for (int i = 0; i < rows.size(); i++) {
 
                     Log.e("gelen url : ",""+rows.get(i).getFotoURL());
+                    Kampanya camp = rows.get(i);
+                    final String firma = camp.getFirmaID();
+                    Log.e("firmaID",firma);
+                    DatabaseReference dr = mDatabase.child("Firma").child(firma);
 
-                    HomeListItem card = new HomeListItem(rows.get(i).getFotoURL(),rows.get(i).getKampanyaAd(),rows.get(i).getKampanyaId(),rows.get(i).getKampanyaInfo(),rows.get(i).getKampanyaSüre());
-                    adapter.add(card);
+                    final int j = i;
+
+                    dr.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            //Firma firm = dataSnapshot.getValue(Firma.class);
+
+                            foto = dataSnapshot.child("firmaFoto").getValue().toString();
+                            firmilce = dataSnapshot.child("ilce").getValue().toString();
+                            //firma = dataSnapshot.child("firma")
+
+                            HomeListItem card = new HomeListItem(rows.get(j).getFotoURL(),foto,rows.get(j).getKampanyaAd(),
+                                    firmilce,rows.get(j).getKampanyaInfo(),rows.get(j).getKampanyaSüre());
+                            adapter.add(card);
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+                       /* dr.child("firmaFoto").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                foto = dataSnapshot.getValue(String.class);
+                                Log.e("foto",foto);
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                        dr.child("ilce").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                firmilce = dataSnapshot.getValue(String.class);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });*/
+
+                       //dr.child("firmaFoto").addValueEventListener(new DataEventListener(i,0));
+                       //dr.child("ilce").addValueEventListener(new DataEventListener(i,1));
+
+
+
+
+
+
+
+
                     //list.add(card);
                 }
+
+
+
                 listView.setAdapter(adapter);
+
 
             }
 
@@ -179,6 +257,26 @@ public class HomeFrag extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 String isim = adapter.getItem(i).getIsim();
+                HomeListItem item = adapter.getItem(i);
+                String uri = item.getFirmaUri();
+
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Firma");
+
+                Query query = reference.orderByChild("firmaFoto").equalTo(uri);
+
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("key",adapter.getItem(i));
@@ -196,6 +294,56 @@ public class HomeFrag extends Fragment {
         return view;
 
 
+    }
+
+    class DataEventListener implements ValueEventListener{
+
+        private int index;
+        private int para;
+
+        DataEventListener(int index, int para){
+            this.index = index;
+            this.para = para;
+        }
+
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+           /* if (para==0){
+                //foto = dataSnapshot.getValue(String.class);
+                foto.add(index,dataSnapshot.getValue(String.class));
+                //adapter.getItem(index).setFirmaUri(foto);
+            }
+
+            else{
+                //firmilce = dataSnapshot.getValue(String.class);
+                firmilce.add(index,dataSnapshot.getValue(String.class));
+                //adapter.getItem(index).setIlce(firmilce);
+
+            }
+
+            //if (adapter.getCount()>0){
+
+            //}
+
+            if (firmilce.size()==rows.size()&&foto.size()==rows.size()){
+                for (int j=0;j<rows.size();j++){
+                    HomeListItem card = new HomeListItem(rows.get(j).getFotoURL(),foto.get(j),rows.get(j).getKampanyaAd(),
+                            firmilce.get(j),rows.get(j).getKampanyaInfo(),rows.get(j).getKampanyaSüre());
+                    adapter.add(card);
+
+                }
+
+                listView.setAdapter(adapter);
+            }*/
+
+
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
     }
 
     @Override

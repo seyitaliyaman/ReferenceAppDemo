@@ -46,9 +46,6 @@ public class FirmaSayfasi extends AppCompatActivity {
         kampanyaSure = findViewById(R.id.kampanyaSüre);
 
 
-
-
-
         Bundle bundle = this.getIntent().getExtras();
 
         HomeListItem listItem = (HomeListItem) bundle.get("key");

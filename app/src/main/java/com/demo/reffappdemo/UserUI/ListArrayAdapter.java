@@ -27,6 +27,7 @@ public class ListArrayAdapter  extends ArrayAdapter<HomeListItem>  {
 
     static class ViewHolder {
         ImageView img;
+        ImageView firmaimg;
         TextView text1;
         TextView text2;
         TextView text3;
@@ -60,6 +61,7 @@ public class ListArrayAdapter  extends ArrayAdapter<HomeListItem>  {
             LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.list_item, parent, false);
             viewHolder = new ViewHolder();
+            viewHolder.firmaimg = row.findViewById(R.id.imageView6);
             viewHolder.img = row.findViewById(R.id.imageView);
             viewHolder.text1 = row.findViewById(R.id.textView);
             viewHolder.text2 = row.findViewById(R.id.textView2);
@@ -70,6 +72,7 @@ public class ListArrayAdapter  extends ArrayAdapter<HomeListItem>  {
         }
         HomeListItem card = getItem(position);
         //Log.e("deneme4 ",""+Uri.parse(card.getView()));
+        Picasso.get().load(Uri.parse(card.getFirmaUri())).resize(300,250).into(viewHolder.firmaimg);
         Picasso.get().load(Uri.parse(card.getView())).resize(600,500).into(viewHolder.img);
         //viewHolder.img.setImageURI(Uri.parse(card.getView()));
         //viewHolder.img.setImageDrawable(card.getImg());

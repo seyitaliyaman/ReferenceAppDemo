@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.demo.reffappdemo.Model.Users;
 import com.demo.reffappdemo.R;
 
 public class Home extends AppCompatActivity {
@@ -41,12 +42,17 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         String id = getIntent().getStringExtra("id");
+        Bundle userbund = getIntent().getExtras();
+
 
         Bundle bundle = new Bundle();
         bundle.putString("edt", id);
         // set Fragmentclass Arguments
         HomeFrag frag= new HomeFrag();
         frag.setArguments(bundle);
+
+        ProfileFragment pf = new ProfileFragment();
+        pf.setArguments(userbund);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container,new HomeFrag()).commit();
         BottomNavigationView navView = findViewById(R.id.nav_view);

@@ -1,6 +1,8 @@
 package com.demo.reffappdemo.Model;
 
-public class Users {
+import java.io.Serializable;
+
+public class Users implements Serializable {
 
     private String fullname;
     private String nickname;

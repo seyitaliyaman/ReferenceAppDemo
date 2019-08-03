@@ -2,14 +2,16 @@ package com.demo.reffappdemo.Model;
 
 public class Kampanya {
 
+    private String firmaID;
     private String fotoURL;
     private String kampanyaAd;
     private String kampanyaId;
     private String kampanyaInfo;
     private String kampanyaSüre;
 
-    public Kampanya(String fotoURL, String kampanyaAd, String kampanyaId, String kampanyaInfo, String kampanyaSüre) {
+    public Kampanya(String firmaID, String fotoURL, String kampanyaAd, String kampanyaId, String kampanyaInfo, String kampanyaSüre) {
         this.fotoURL = fotoURL;
+        this.firmaID = firmaID;
         this.kampanyaAd = kampanyaAd;
         this.kampanyaId = kampanyaId;
         this.kampanyaInfo = kampanyaInfo;
@@ -17,6 +19,14 @@ public class Kampanya {
     }
 
     public Kampanya(){}
+
+    public String getFirmaID() {
+        return firmaID;
+    }
+
+    public void setFirmaID(String firmaID) {
+        this.firmaID = firmaID;
+    }
 
     public String getFotoURL() {
         return fotoURL;

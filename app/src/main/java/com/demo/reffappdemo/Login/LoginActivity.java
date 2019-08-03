@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mRef;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    Bundle bundle = new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void logIn(Users readUser, String password) {
+    private void logIn(final Users readUser, String password) {
 
         mAuth.signInWithEmailAndPassword(readUser.getEmail(),password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -112,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
 
                     Log.e("giriş yapan uid",""+mAuth.getCurrentUser().getUid());
+                    bundle.putSerializable("user",readUser);
                     Toast.makeText(getApplicationContext(),"Giriş Yapıldı"+mAuth.getCurrentUser().getUid(),Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(getApplicationContext(),"Kullanıcı adı veya şifre yanlış. Tekrar deneyin!",Toast.LENGTH_LONG).show();
@@ -129,8 +132,10 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                 if(user!=null){
+
                     Intent intent = new Intent(getApplicationContext(), Home.class);
                     intent.putExtra("id",mAuth.getCurrentUser().getUid());
+                    intent.putExtras(bundle);
                     startActivity(intent);
                     finish();
                 }else{

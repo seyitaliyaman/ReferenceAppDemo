@@ -13,7 +13,8 @@ public class HomeListItem implements Serializable {
     private String isim;
     private String ilce;
     private String kampanya;
-    private String  viewUri;
+    private String viewUri;
+    private String firmaUri;
     private String kampanyaTime;
 
 
@@ -25,12 +26,21 @@ public class HomeListItem implements Serializable {
         this.kampanya = kampanya;
     }
 
-    public HomeListItem(String viewUri,String isim, String ilce, String kampanya,String kampanyaTime){
+    public HomeListItem(String viewUri, String firmaUri, String isim, String ilce, String kampanya,String kampanyaTime){
         this.viewUri = viewUri;
+        this.firmaUri = firmaUri;
         this.isim = isim;
         this.ilce = ilce;
         this.kampanya = kampanya;
         this.kampanyaTime = kampanyaTime;
+    }
+
+    public String getFirmaUri() {
+        return firmaUri;
+    }
+
+    public void setFirmaUri(String firmaUri) {
+        this.firmaUri = firmaUri;
     }
 
     public String getView() {

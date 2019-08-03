@@ -45,7 +45,7 @@
 
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
                         android:layout_margin="12dp"
@@ -60,16 +60,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:lineSpacingMultiplier="1.5"
-                            android:text="İsim:"
                             android:paddingLeft="10dp"
+                            android:text="İsim:"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:paddingLeft="20dp"/>
 
                     </LinearLayout>
 
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
                         android:layout_margin="12dp"
@@ -84,15 +92,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:lineSpacingMultiplier="1.5"
-                            android:text="Kullanıcı Adı:"
                             android:paddingLeft="10dp"
+                            android:text="Kullanıcı Adı:"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:paddingLeft="20dp"/>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
                         android:layout_margin="12dp"
@@ -107,15 +123,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:lineSpacingMultiplier="1.5"
-                            android:text="E-Mail"
                             android:paddingLeft="10dp"
+                            android:text="E-Mail:"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/usermail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:paddingLeft="20dp"/>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
                         android:layout_margin="12dp"
@@ -130,10 +154,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:lineSpacingMultiplier="1.5"
-                            android:text="Telefon:"
                             android:paddingLeft="10dp"
+                            android:text="Telefon:"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/userno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:text="TextView"
+                            android:paddingLeft="20dp"/>
 
                     </LinearLayout>
 
