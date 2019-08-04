@@ -32,6 +32,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class ConfirmationFragment extends Fragment{
 
@@ -134,12 +136,13 @@ public class ConfirmationFragment extends Fragment{
         });
 
 
-        /*setupCallBack();
+
+        setupCallBack();
 
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber,90, TimeUnit.SECONDS,this.getActivity(),mCallBack);
 
-*/
+
 
         return view;
     }

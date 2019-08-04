@@ -9,12 +9,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:textAlignment="center"
             android:textSize="40dp"
-            android:layout_marginTop="80dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
@@ -51,7 +51,6 @@
             android:layout_width="211dp"
             android:layout_height="41dp"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="94dp"
             android:background="@drawable/round_corner"
             android:hint="Doğrulama Kodu"
             android:textColorHint="#FFFFFF"
@@ -64,7 +63,6 @@
             android:id="@+id/confirm"
             android:layout_width="211dp"
             android:layout_height="41dp"
-            android:layout_marginLeft="94dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/round_corner_button"
             android:text="TAMAMLA"

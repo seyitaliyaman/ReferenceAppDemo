@@ -188,6 +188,7 @@
                             app:srcCompat="@drawable/location_web" />
 
                         <TextView
+                            android:id="@+id/firmaAdres"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:lineSpacingMultiplier="1.5"
@@ -213,6 +214,7 @@
                             app:srcCompat="@drawable/phone_web" />
 
                         <TextView
+                            android:id="@+id/firmaTelefon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:lineSpacingMultiplier="1.5"
@@ -236,6 +238,7 @@
                             app:srcCompat="@drawable/place_web" />
 
                         <TextView
+                            android:id="@+id/firmaSektör"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:lineSpacingMultiplier="1.5"

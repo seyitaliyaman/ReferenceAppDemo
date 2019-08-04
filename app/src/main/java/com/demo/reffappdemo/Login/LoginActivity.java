@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText usernameInput,passwordInput;
     private Button loginButton;
-    private TextView createAccount,help;
+    private TextView createAccount;
 
 
     private FirebaseAuth mAuth;
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordInput = (EditText) findViewById(R.id.passwordInput);
         loginButton = (Button) findViewById(R.id.loginButton);
         createAccount = (TextView) findViewById(R.id.createAccount);
-        help = (TextView) findViewById(R.id.help);
+
 
         mAuth = FirebaseAuth.getInstance();
         mRef = FirebaseDatabase.getInstance().getReference();

@@ -13,8 +13,8 @@ public class Firma {
     private String sektor;
     private String telefon;
 
-    public Firma(String adres, String firma, String firmaFoto, String ilce, HashMap<String,String> kampanyalar,
-                 String sektor, String telefon) {
+
+    public Firma(String adres, String firma, String ilce, String sektor , String telefon) {
         this.adres = adres;
         this.firma = firma;
         this.firmaFoto = firmaFoto;

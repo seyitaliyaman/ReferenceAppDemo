@@ -17,7 +17,15 @@ public class HomeListItem implements Serializable {
     private String firmaUri;
     private String kampanyaTime;
 
+    private String adres;
+    private String telefon;
+    private String sektörr;
 
+    public HomeListItem(String adres, String telefon, String sektörr) {
+        this.adres = adres;
+        this.telefon = telefon;
+        this.sektörr = sektörr;
+    }
 
     public HomeListItem(Drawable img, String isim, String ilce, String kampanya) {
         this.img = img;
@@ -97,5 +105,30 @@ public class HomeListItem implements Serializable {
 
     public void setKampanyaTime(String kampanyaSüre) {
         this.kampanyaTime = kampanyaSüre;
+    }
+
+
+    public String getAdres() {
+        return adres;
+    }
+
+    public void setAdres(String adres) {
+        this.adres = adres;
+    }
+
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+
+    public String getSektörr() {
+        return sektörr;
+    }
+
+    public void setSektörr(String sektörr) {
+        this.sektörr = sektörr;
     }
 }

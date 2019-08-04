@@ -47,11 +47,16 @@ public class HomeFrag extends Fragment {
 
     private DatabaseReference mDatabase;
     private DatabaseReference mKampanyaRef;
+    private DatabaseReference mFirmaRef;
     private ChildEventListener mKampanyaListener;
 
     private FirebaseUser user;
 
     private List<Kampanya> rows = new ArrayList<>();
+
+    private List<Firma> firmaList = new ArrayList<>();
+
+    private List<HomeListItem> tmp = new ArrayList<>();
 
     //List<String> foto = new ArrayList<>();
     //List<String> firmilce = new ArrayList<>();
@@ -71,6 +76,7 @@ public class HomeFrag extends Fragment {
         super.onCreate(savedInstanceState);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mKampanyaRef = FirebaseDatabase.getInstance().getReference("Kampanya");
+        mFirmaRef = FirebaseDatabase.getInstance().getReference("Firma");
         user = FirebaseAuth.getInstance().getCurrentUser();
 
     }
@@ -150,6 +156,30 @@ public class HomeFrag extends Fragment {
         //rows = mDatabase.child("Kampanya").
 
         //List<HomeListItem> list = new ArrayList<>();
+        mFirmaRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot kamp:dataSnapshot.getChildren()){
+                    Firma firma = kamp.getValue(Firma.class);
+                    firmaList.add(firma);
+
+
+                }
+
+                for (int i=0; i<firmaList.size(); i++){
+                    Log.e("gelen firma: ",""+firmaList.get(i).getSektor());
+                    HomeListItem firmaInfo = new HomeListItem(firmaList.get(i).getAdres(),firmaList.get(i).getTelefon(),firmaList.get(i).getSektor());
+                    tmp.add(firmaInfo);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         mKampanyaRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -234,13 +264,15 @@ public class HomeFrag extends Fragment {
 
 
 
+
+
+                    HomeListItem card = new HomeListItem(rows.get(i).getFotoURL(),rows.get(i).getKampanyaAd(),rows.get(i).getKampanyaId(),rows.get(i).getKampanyaInfo(),rows.get(i).getKampanyaSüre());
+
+                    adapter.add(card);
+
                     //list.add(card);
                 }
-
-
-
                 listView.setAdapter(adapter);
-
 
             }
 
@@ -280,6 +312,7 @@ public class HomeFrag extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("key",adapter.getItem(i));
+                bundle.putSerializable("firmainf",tmp.get(i));
                 Intent intent = new Intent(getContext(),FirmaSayfasi.class);
                 intent.putExtra("isim",isim);
                 intent.putExtras(bundle);

@@ -31,6 +31,8 @@ public class FirmaSayfasi extends AppCompatActivity {
 
     private TextView kampanyaAd,kampanyaInfo,kampanyaSure;
 
+    private TextView firmaAdres, firmaTelefon, firmaSektör;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -45,14 +47,22 @@ public class FirmaSayfasi extends AppCompatActivity {
         kampanyaInfo = findViewById(R.id.kampanyaInfo);
         kampanyaSure = findViewById(R.id.kampanyaSüre);
 
+        firmaAdres = findViewById(R.id.firmaAdres);
+        firmaSektör = findViewById(R.id.firmaSektör);
+        firmaTelefon = findViewById(R.id.firmaTelefon);
 
         Bundle bundle = this.getIntent().getExtras();
 
         HomeListItem listItem = (HomeListItem) bundle.get("key");
+        HomeListItem firmaItem = (HomeListItem) bundle.get("firmainf");
 
         kampanyaAd.setText(listItem.getIsim());
         kampanyaInfo.setText(listItem.getKampanya());
         kampanyaSure.setText(listItem.getKampanyaTime());
+
+        firmaAdres.setText(firmaItem.getAdres());
+        firmaSektör.setText(firmaItem.getSektörr());
+        firmaTelefon.setText(firmaItem.getTelefon());
 
 
         Picasso.get().load(listItem.getView()).into(kampanyaView);

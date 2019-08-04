@@ -70,13 +70,13 @@ public class KampanyaPaylas extends AppCompatActivity {
             int height = dm.heightPixels;
 
             getWindow().setLayout((int) (width*.85),(int) (height*.5));
-            //getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.corner_round_button));
+            getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.round_corner_button));
         }else{
             int width = dm.widthPixels;
             int height = dm.heightPixels;
 
             getWindow().setLayout((int) (width*.5),(int) (height*.85));
-            //getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.corner_round_button));
+            getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.round_corner_button));
         }
     }
 
