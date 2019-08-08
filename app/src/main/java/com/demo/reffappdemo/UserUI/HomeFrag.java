@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,9 +31,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class HomeFrag extends Fragment {
 
@@ -47,15 +45,13 @@ public class HomeFrag extends Fragment {
 
     private DatabaseReference mDatabase;
     private DatabaseReference mKampanyaRef;
-    private DatabaseReference mFirmaRef;
+    private DatabaseReference mFirmaInfRef;
     private ChildEventListener mKampanyaListener;
 
     private FirebaseUser user;
 
     private List<Kampanya> rows = new ArrayList<>();
-
     private List<Firma> firmaList = new ArrayList<>();
-
     private List<HomeListItem> tmp = new ArrayList<>();
 
     //List<String> foto = new ArrayList<>();
@@ -76,7 +72,7 @@ public class HomeFrag extends Fragment {
         super.onCreate(savedInstanceState);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mKampanyaRef = FirebaseDatabase.getInstance().getReference("Kampanya");
-        mFirmaRef = FirebaseDatabase.getInstance().getReference("Firma");
+        mFirmaInfRef = FirebaseDatabase.getInstance().getReference("Firma");
         user = FirebaseAuth.getInstance().getCurrentUser();
 
     }
@@ -156,29 +152,8 @@ public class HomeFrag extends Fragment {
         //rows = mDatabase.child("Kampanya").
 
         //List<HomeListItem> list = new ArrayList<>();
-        mFirmaRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot kamp:dataSnapshot.getChildren()){
-                    Firma firma = kamp.getValue(Firma.class);
-                    firmaList.add(firma);
 
 
-                }
-
-                for (int i=0; i<firmaList.size(); i++){
-                    Log.e("gelen firma: ",""+firmaList.get(i).getSektor());
-                    HomeListItem firmaInfo = new HomeListItem(firmaList.get(i).getAdres(),firmaList.get(i).getTelefon(),firmaList.get(i).getSektor());
-                    tmp.add(firmaInfo);
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         mKampanyaRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -226,54 +201,30 @@ public class HomeFrag extends Fragment {
                         }
                     });
 
-
-                       /* dr.child("firmaFoto").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                foto = dataSnapshot.getValue(String.class);
-                                Log.e("foto",foto);
-
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-                        dr.child("ilce").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                firmilce = dataSnapshot.getValue(String.class);
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });*/
-
-                       //dr.child("firmaFoto").addValueEventListener(new DataEventListener(i,0));
-                       //dr.child("ilce").addValueEventListener(new DataEventListener(i,1));
-
-
-
-
-
-
-
-
-
-
-                    HomeListItem card = new HomeListItem(rows.get(i).getFotoURL(),rows.get(i).getKampanyaAd(),rows.get(i).getKampanyaId(),rows.get(i).getKampanyaInfo(),rows.get(i).getKampanyaSüre());
-
-                    adapter.add(card);
-
-                    //list.add(card);
                 }
                 listView.setAdapter(adapter);
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mFirmaInfRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                   for(DataSnapshot firmmaInf : dataSnapshot.getChildren()){
+                    Firma firma = firmmaInf.getValue(Firma.class);
+                    Log.e("firma id",""+dataSnapshot);
+                    firmaList.add(firma);
+                }
+                for (int i=0; i<firmaList.size(); i++){
+                    HomeListItem inf = new HomeListItem(firmaList.get(i).getAdres(),firmaList.get(i).getSektor(),firmaList.get(i).getTelefon());
+                    tmp.add(inf);
+                }
             }
 
             @Override
@@ -292,24 +243,8 @@ public class HomeFrag extends Fragment {
                 HomeListItem item = adapter.getItem(i);
                 String uri = item.getFirmaUri();
 
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Firma");
 
-                Query query = reference.orderByChild("firmaFoto").equalTo(uri);
-
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()){
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
+                Log.e("tıklanan firma info",""+tmp.get(i).getSektör()+" index "+i);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("key",adapter.getItem(i));
                 bundle.putSerializable("firmainf",tmp.get(i));
@@ -329,119 +264,7 @@ public class HomeFrag extends Fragment {
 
     }
 
-    class DataEventListener implements ValueEventListener{
 
-        private int index;
-        private int para;
-
-        DataEventListener(int index, int para){
-            this.index = index;
-            this.para = para;
-        }
-
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-           /* if (para==0){
-                //foto = dataSnapshot.getValue(String.class);
-                foto.add(index,dataSnapshot.getValue(String.class));
-                //adapter.getItem(index).setFirmaUri(foto);
-            }
-
-            else{
-                //firmilce = dataSnapshot.getValue(String.class);
-                firmilce.add(index,dataSnapshot.getValue(String.class));
-                //adapter.getItem(index).setIlce(firmilce);
-
-            }
-
-            //if (adapter.getCount()>0){
-
-            //}
-
-            if (firmilce.size()==rows.size()&&foto.size()==rows.size()){
-                for (int j=0;j<rows.size();j++){
-                    HomeListItem card = new HomeListItem(rows.get(j).getFotoURL(),foto.get(j),rows.get(j).getKampanyaAd(),
-                            firmilce.get(j),rows.get(j).getKampanyaInfo(),rows.get(j).getKampanyaSüre());
-                    adapter.add(card);
-
-                }
-
-                listView.setAdapter(adapter);
-            }*/
-
-
-
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        /*ChildEventListener childEventListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Kampanya kampanya = dataSnapshot.getValue(Kampanya.class);
-                rows.add(kampanya);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-
-        mKampanyaRef.addChildEventListener(childEventListener);
-
-        mKampanyaListener = childEventListener;
-
-        listView.addHeaderView(new View(getContext()));
-        listView.addFooterView(new View(getContext()));
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                String isim = adapter.getItem(i).getIsim();
-                Intent intent = new Intent(getContext(),FirmaSayfasi.class);
-                intent.putExtra("isim",isim);
-                startActivity(intent);
-
-
-            }
-        });
-
-        adapter = new ListArrayAdapter(getContext(),R.layout.list_item);
-
-        for (int i = 0; i < rows.size(); i++) {
-
-            HomeListItem card = new HomeListItem(getContext().getDrawable(R.drawable.images),rows.get(i).getKampanyaAd(),"Zeytinburnu",rows.get(i).getKampanyaInfo());
-            adapter.add(card);
-            //list.add(card);
-        }
-        listView.setAdapter(adapter);*/
-
-
-    }
 
     class SpinnerAdapter extends ArrayAdapter<String>{
 
@@ -458,8 +281,7 @@ public class HomeFrag extends Fragment {
 
 
         @Override
-        public View getDropDownView(int position, View convertView,
-                                    ViewGroup parent) {
+        public View getDropDownView(int position, View convertView, ViewGroup parent) {
             View view = super.getDropDownView(position, convertView, parent);
             TextView tv = (TextView) view;
             if(position == 0){

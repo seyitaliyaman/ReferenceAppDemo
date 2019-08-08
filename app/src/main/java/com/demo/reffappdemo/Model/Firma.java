@@ -1,45 +1,25 @@
 package com.demo.reffappdemo.Model;
 
-import java.util.HashMap;
-import java.util.List;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Firma {
 
     private String adres;
     private String firma;
-    private String firmaFoto;
     private String ilce;
-    private HashMap<String,String> kampanyalar;
     private String sektor;
     private String telefon;
-
 
     public Firma(String adres, String firma, String ilce, String sektor , String telefon) {
         this.adres = adres;
         this.firma = firma;
-        this.firmaFoto = firmaFoto;
         this.ilce = ilce;
-        this.kampanyalar = kampanyalar;
         this.sektor = sektor;
         this.telefon = telefon;
     }
 
-    public Firma(){}
+    public Firma(){
 
-    public String getFirmaFoto() {
-        return firmaFoto;
-    }
-
-    public void setFirmaFoto(String firmaFoto) {
-        this.firmaFoto = firmaFoto;
-    }
-
-    public HashMap<String,String> getKampanyalar() {
-        return kampanyalar;
-    }
-
-    public void setKampanyalar(HashMap<String,String> kampanyalar) {
-        this.kampanyalar = kampanyalar;
     }
 
     public String getAdres() {

@@ -61,7 +61,7 @@ public class FirmaSayfasi extends AppCompatActivity {
         kampanyaSure.setText(listItem.getKampanyaTime());
 
         firmaAdres.setText(firmaItem.getAdres());
-        firmaSektör.setText(firmaItem.getSektörr());
+        firmaSektör.setText(firmaItem.getSektör());
         firmaTelefon.setText(firmaItem.getTelefon());
 
 

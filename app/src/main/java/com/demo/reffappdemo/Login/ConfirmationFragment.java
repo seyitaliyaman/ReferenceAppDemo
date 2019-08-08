@@ -81,7 +81,7 @@ public class ConfirmationFragment extends Fragment{
             @Override
             public void onClick(View v) {
 
-                if(confirmationCode.getText().toString().equals("123456")){
+                if(confirmationCode.getText().toString().equals(incomingCode)){
 
                         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
