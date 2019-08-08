@@ -11,14 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".InviteeGetCode"
+            android:theme="@style/AppTheme.Popups" />
 
         <activity android:name=".UserUI.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".KampanyaPaylas"
             android:theme="@style/AppTheme.Popups" />
@@ -28,12 +31,9 @@
         <activity
             android:name=".UserUI.Home"
             android:label="@string/title_activity_home" />
-        <activity android:name=".UserUI.HomePage"></activity>
-
-        <activity android:name=".Login.LoginActivity">
-        </activity>
+        <activity android:name=".UserUI.HomePage" />
+        <activity android:name=".Login.LoginActivity"></activity>
         <activity android:name=".Login.RegisterActivity" />
-
         <activity
             android:name=".InviteeView"
             android:theme="@style/AppTheme.NoActionBar">
@@ -61,7 +61,5 @@
             </intent-filter>
         </activity>
     </application>
-
-
 
 </manifest>

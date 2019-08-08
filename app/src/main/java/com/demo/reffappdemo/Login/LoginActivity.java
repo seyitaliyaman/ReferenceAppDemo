@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     Log.e("giriş yapan uid",""+mAuth.getCurrentUser().getUid());
                     bundle.putSerializable("user",readUser);
-                    Toast.makeText(getApplicationContext(),"Giriş Yapıldı"+mAuth.getCurrentUser().getUid(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Giriş Yapıldı"+mAuth.getCurrentUser().getEmail(),Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(getApplicationContext(),"Kullanıcı adı veya şifre yanlış. Tekrar deneyin!",Toast.LENGTH_LONG).show();
                 }

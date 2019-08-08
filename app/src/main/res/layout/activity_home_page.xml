@@ -14,18 +14,16 @@
         android:background="#EEFFEBEE"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="-4dp"
-        tools:layout_editor_absoluteY="0dp">
-
+        tools:layout_editor_absoluteY="0dp"
+        android:gravity="center_horizontal">
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="171dp"
             android:layout_height="50dp" />
-
         <Spinner
             android:id="@+id/spinner2"
-            android:layout_width="174dp"
+            android:layout_width="160dp"
             android:layout_height="50dp" />
-
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
@@ -34,6 +32,8 @@
             android:background="@drawable/search_button"
             android:src="@drawable/campaign_web"/>
     </LinearLayout>
+
+
 
     <ListView
         android:id="@+id/listView"
@@ -47,4 +47,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0" />
+
+
 </LinearLayout>

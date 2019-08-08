@@ -75,6 +75,7 @@ public class HomeFrag extends Fragment {
         mFirmaInfRef = FirebaseDatabase.getInstance().getReference("Firma");
         user = FirebaseAuth.getInstance().getCurrentUser();
 
+        Log.e("current user",""+user);
     }
 
     @Override
@@ -248,6 +249,8 @@ public class HomeFrag extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("key",adapter.getItem(i));
                 bundle.putSerializable("firmainf",tmp.get(i));
+                bundle.putString("kampanyaId",rows.get(i).getKampanyaId());
+                Log.e("kampanya id tıklanan",""+rows.get(i).getKampanyaId());
                 Intent intent = new Intent(getContext(),FirmaSayfasi.class);
                 intent.putExtra("isim",isim);
                 intent.putExtras(bundle);

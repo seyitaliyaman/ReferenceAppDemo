@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.demo.reffappdemo.KampanyaPaylas;
 import com.demo.reffappdemo.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class FirmaSayfasi extends AppCompatActivity {
@@ -32,6 +34,8 @@ public class FirmaSayfasi extends AppCompatActivity {
     private TextView kampanyaAd,kampanyaInfo,kampanyaSure;
 
     private TextView firmaAdres, firmaTelefon, firmaSektör;
+
+    private String kampanyaId="sa deneme";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +55,13 @@ public class FirmaSayfasi extends AppCompatActivity {
         firmaSektör = findViewById(R.id.firmaSektör);
         firmaTelefon = findViewById(R.id.firmaTelefon);
 
-        Bundle bundle = this.getIntent().getExtras();
+        final Bundle bundle = this.getIntent().getExtras();
 
         HomeListItem listItem = (HomeListItem) bundle.get("key");
         HomeListItem firmaItem = (HomeListItem) bundle.get("firmainf");
+
+        kampanyaId = (String) bundle.get("kampanyaId");
+        Log.e("kampanya id firma",""+kampanyaId);
 
         kampanyaAd.setText(listItem.getIsim());
         kampanyaInfo.setText(listItem.getKampanya());
@@ -79,8 +86,9 @@ public class FirmaSayfasi extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Paylaşma Seçenekleri Yazılacak
+
                 Intent i = new Intent(getBaseContext(), KampanyaPaylas.class);
+                i.putExtra("kampKey",kampanyaId);
                 startActivity(i);
             }
         });
