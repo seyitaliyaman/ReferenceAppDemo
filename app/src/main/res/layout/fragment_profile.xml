@@ -4,28 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/profile"
+    android:background="@drawable/architectural_art_artistic_532563"
     tools:context=".UserUI.ProfileFragment">
 
-    <android.support.v4.widget.NestedScrollView
+    <!--<android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-
-
+    -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6">
+
+            </android.support.constraint.ConstraintLayout>
+
             <android.support.v7.widget.CardView
                 android:id="@+id/detaykart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
+                android:layout_weight="0.35"
                 app:cardElevation="5dp"
                 app:cardUseCompatPadding="true">
 
@@ -65,13 +72,25 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:paddingLeft="20dp"
                             android:text="TextView"
-                            android:paddingLeft="20dp"/>
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:inputType="textPersonName"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/namebut"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="10dp"
+                            android:background="@mipmap/edit" />
 
                     </LinearLayout>
 
@@ -97,13 +116,23 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/username"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:paddingLeft="20dp"
                             android:text="TextView"
-                            android:paddingLeft="20dp"/>
+                            android:cursorVisible="false"
+                            android:focusable="false"/>
+
+                        <ImageButton
+                            android:id="@+id/usernamebut"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="10dp"
+                            android:background="@mipmap/edit" />
 
                     </LinearLayout>
 
@@ -128,13 +157,25 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/usermail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:paddingLeft="20dp"
                             android:text="TextView"
-                            android:paddingLeft="20dp"/>
+                            android:inputType="textEmailAddress"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/mailButton"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="10dp"
+                            android:background="@mipmap/edit" />
 
                     </LinearLayout>
 
@@ -159,23 +200,41 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/userno"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.3"
+                            android:paddingLeft="20dp"
                             android:text="TextView"
-                            android:paddingLeft="20dp"/>
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:inputType="phone"/>
+
+                        <ImageButton
+                            android:id="@+id/phone_button"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="10dp"
+                            android:background="@mipmap/edit" />
 
                     </LinearLayout>
-
 
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
-           <!-- <android.support.v7.widget.CardView
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6">
+
+            </android.support.constraint.ConstraintLayout>
+
+            <!-- <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -278,7 +337,7 @@
 
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+   <!-- </android.support.v4.widget.NestedScrollView> -->
 
 
 </FrameLayout>

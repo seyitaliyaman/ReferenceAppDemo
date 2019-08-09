@@ -4,14 +4,16 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.demo.reffappdemo.Model.Users;
 import com.demo.reffappdemo.R;
 
 public class Home extends AppCompatActivity {
     private TextView mTextMessage;
+
+    public static String id;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,7 +45,10 @@ public class Home extends AppCompatActivity {
 
         String id = getIntent().getStringExtra("id");
         Bundle userbund = getIntent().getExtras();
-
+        if (userbund != null)
+            userbund.putCharSequence("id",id);
+        this.id = id;
+        Log.e("TAG",""+id);
 
         Bundle bundle = new Bundle();
         bundle.putString("edt", id);
