@@ -31,6 +31,7 @@ public class ListArrayAdapter  extends ArrayAdapter<HomeListItem>  {
         TextView text1;
         TextView text2;
         TextView text3;
+        TextView likeCount;
     }
 
     public ListArrayAdapter(Context context, int textViewResourceId) {
@@ -66,6 +67,7 @@ public class ListArrayAdapter  extends ArrayAdapter<HomeListItem>  {
             viewHolder.text1 = row.findViewById(R.id.textView);
             viewHolder.text2 = row.findViewById(R.id.textView2);
             viewHolder.text3 = row.findViewById(R.id.textView3);
+            viewHolder.likeCount = row.findViewById(R.id.likeNum);
             row.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder)row.getTag();
@@ -79,6 +81,7 @@ public class ListArrayAdapter  extends ArrayAdapter<HomeListItem>  {
         viewHolder.text1.setText(card.getIsim());
         viewHolder.text2.setText(card.getIlce());
         viewHolder.text3.setText(card.getKampanya());
+        viewHolder.likeCount.setText(card.getLikeCount());
 
         return row;
     }

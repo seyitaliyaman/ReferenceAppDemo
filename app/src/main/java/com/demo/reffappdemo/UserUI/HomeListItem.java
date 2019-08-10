@@ -20,6 +20,7 @@ public class HomeListItem implements Serializable {
     private String adres;
     private String sektör;
     private String telefon;
+    private String likeCount;
 
 
     public HomeListItem(String adres, String sektör, String telefon) {
@@ -37,6 +38,16 @@ public class HomeListItem implements Serializable {
 
     public HomeListItem(String viewUri, String firmaUri, String isim, String ilce, String kampanya,String kampanyaTime){
         this.viewUri = viewUri;
+        this.firmaUri = firmaUri;
+        this.isim = isim;
+        this.ilce = ilce;
+        this.kampanya = kampanya;
+        this.kampanyaTime = kampanyaTime;
+    }
+
+    public HomeListItem(String viewUri, String firmaUri,String likeCount, String isim, String ilce, String kampanya,String kampanyaTime){
+        this.viewUri = viewUri;
+        this.likeCount = likeCount;
         this.firmaUri = firmaUri;
         this.isim = isim;
         this.ilce = ilce;
@@ -130,5 +141,13 @@ public class HomeListItem implements Serializable {
 
     public void setTelefon(String telefon) {
         this.telefon = telefon;
+    }
+
+    public String getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(String likeCount) {
+        this.likeCount = likeCount;
     }
 }

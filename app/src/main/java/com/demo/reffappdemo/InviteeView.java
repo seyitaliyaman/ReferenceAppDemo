@@ -3,7 +3,10 @@ package com.demo.reffappdemo;
 import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,7 +44,7 @@ public class InviteeView extends AppCompatActivity {
     private Kampanya kampanya;
     private Firma firma;
 
-
+    private ConstraintLayout secondLay;
 
     private String getKampanyaId;
     private String kampCode;
@@ -50,6 +53,29 @@ public class InviteeView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invitee_view);
+
+
+        secondLay = findViewById(R.id.secondLay);
+        fab = findViewById(R.id.invFab);
+
+        secondLay.setVisibility(View.VISIBLE);
+        fab.hide();
+
+
+
+        new CountDownTimer(4000,1000){
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                secondLay.setVisibility(View.INVISIBLE);
+                fab.show();
+            }
+        }.start();
 
         kampanyaView = findViewById(R.id.invKampanyaView);
         kampanyaAd = findViewById(R.id.invKampanyaAd);
@@ -60,7 +86,7 @@ public class InviteeView extends AppCompatActivity {
         firmaTelefon = findViewById(R.id.invFirmaTelefon);
         firmaSektör = findViewById(R.id.invFirmaSektör);
 
-        fab = findViewById(R.id.invFab);
+
 
 
 

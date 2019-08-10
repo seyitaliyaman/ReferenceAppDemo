@@ -10,6 +10,7 @@ public class KampanyaListItem {
     private String firma;
     private String adres;
     private String tarih;
+    private String imgUrl;
 
     public Drawable getImg() {
         return img;
@@ -26,6 +27,15 @@ public class KampanyaListItem {
         this.adres = adres;
         this.tarih = tarih;
     }
+
+    public KampanyaListItem(String imgUrl, String kampanyaAd, String firma, String adres, String tarih) {
+        this.imgUrl = imgUrl;
+        this.kampanyaAd = kampanyaAd;
+        this.firma = firma;
+        this.adres = adres;
+        this.tarih = tarih;
+    }
+
 
     public String getKampanyaAd() {
         return kampanyaAd;
@@ -57,5 +67,13 @@ public class KampanyaListItem {
 
     public void setTarih(String tarih) {
         this.tarih = tarih;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

@@ -54,11 +54,10 @@ public class HomeFrag extends Fragment {
     private List<Firma> firmaList = new ArrayList<>();
     private List<HomeListItem> tmp = new ArrayList<>();
 
-    //List<String> foto = new ArrayList<>();
-    //List<String> firmilce = new ArrayList<>();
 
     String foto = "";
     String firmilce = "";
+    String firmaBegeni = "";
 
 
     public HomeFrag() {
@@ -188,9 +187,10 @@ public class HomeFrag extends Fragment {
 
                             foto = dataSnapshot.child("firmaFoto").getValue().toString();
                             firmilce = dataSnapshot.child("ilce").getValue().toString();
+                            firmaBegeni = dataSnapshot.child("begeni").getValue().toString();
                             //firma = dataSnapshot.child("firma")
 
-                            HomeListItem card = new HomeListItem(rows.get(j).getFotoURL(),foto,rows.get(j).getKampanyaAd(),
+                            HomeListItem card = new HomeListItem(rows.get(j).getFotoURL(),foto,firmaBegeni,rows.get(j).getKampanyaAd(),
                                     firmilce,rows.get(j).getKampanyaInfo(),rows.get(j).getKampanyaSüre());
                             adapter.add(card);
 
