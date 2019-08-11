@@ -79,8 +79,6 @@
                             android:layout_weight="1"
                             android:paddingLeft="20dp"
                             android:text="TextView"
-                            android:cursorVisible="false"
-                            android:focusable="false"
                             android:inputType="textPersonName"
                             />
 
@@ -123,8 +121,8 @@
                             android:layout_weight="1"
                             android:paddingLeft="20dp"
                             android:text="TextView"
-                            android:cursorVisible="false"
-                            android:focusable="false"/>
+
+                            />
 
                         <ImageButton
                             android:id="@+id/usernamebut"
@@ -165,8 +163,8 @@
                             android:paddingLeft="20dp"
                             android:text="TextView"
                             android:inputType="textEmailAddress"
-                            android:cursorVisible="false"
-                            android:focusable="false"
+
+
                             />
 
                         <ImageButton
@@ -207,8 +205,7 @@
                             android:layout_weight="0.3"
                             android:paddingLeft="20dp"
                             android:text="TextView"
-                            android:cursorVisible="false"
-                            android:focusable="false"
+
                             android:inputType="phone"/>
 
                         <ImageButton

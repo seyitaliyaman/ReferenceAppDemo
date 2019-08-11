@@ -1,6 +1,12 @@
 package com.demo.reffappdemo.UserUI;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,8 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.demo.reffappdemo.Model.Users;
 import com.demo.reffappdemo.R;
@@ -24,10 +32,10 @@ import org.w3c.dom.Text;
 
 public class ProfileFragment extends Fragment {
 
-    private TextView name;
-    private TextView username;
-    private TextView usermail;
-    private TextView userno;
+    private EditText name;
+    private EditText username;
+    private EditText usermail;
+    private EditText userno;
 
     private ImageButton namebut;
     private ImageButton usernamebut;
@@ -36,7 +44,8 @@ public class ProfileFragment extends Fragment {
 
     String id;
 
-    private ImageButton buts[] = new ImageButton[4];
+    EditText edts[] = new EditText[4];
+    ImageButton buts[] = new ImageButton[4];
 
 
     public ProfileFragment() {
@@ -57,6 +66,7 @@ public class ProfileFragment extends Fragment {
 
         /*id = savedInstanceState.getString("id");
         Log.e("id",id);*/
+        id = Home.id;
     }
 
     @Override
@@ -67,9 +77,13 @@ public class ProfileFragment extends Fragment {
 
 
         name = view.findViewById(R.id.name);
+        edts[0] = name;
         username = view.findViewById(R.id.username);
+        edts[1] = username;
         usermail = view.findViewById(R.id.usermail);
+        edts[2] = usermail;
         userno = view.findViewById(R.id.userno);
+        edts[3] = userno;
 
         namebut = view.findViewById(R.id.namebut);
         buts[0] = namebut;
@@ -79,6 +93,10 @@ public class ProfileFragment extends Fragment {
         buts[2] = emailbut;
         phonebut = view.findViewById(R.id.phone_button);
         buts[3] = phonebut;
+
+        for (int i=0;i<buts.length;i++){
+            buts[i].setOnClickListener(new EditButtonListener(i));
+        }
 
         /*name.setText(user.getFullname());
         username.setText(user.getNickname());
@@ -116,17 +134,64 @@ public class ProfileFragment extends Fragment {
     class EditButtonListener implements View.OnClickListener{
 
         private int index;
+        private String field;
+
 
         EditButtonListener(int index){
 
             this.index=index;
+
+            switch (index){
+                case 0:
+                    field = "fullname";
+                    break;
+                case 1:
+                    field = "nickname";
+                    break;
+
+
+                case 2:
+                    field = "email";
+                    break;
+
+                case 3:
+                    field = "phoneNumber";
+                    break;
+            }
 
         }
 
         @Override
         public void onClick(View view) {
 
+            //if(edts[index].isCursorVisible()){
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Kaydet");
+            builder.setMessage("Yapılan değişiklikleri kaydetmek istiyor musunuz?");
+            builder.setNegativeButton("Hayır", null);
+            builder.setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    String data = edts[index].getText().toString();
+                    DatabaseReference dr = FirebaseDatabase.getInstance().getReference().child("Users").child(id);
+                    dr.child(field).setValue(data);
+                    Toast.makeText(getContext(),"Kaydedildi!",Toast.LENGTH_LONG).show();
+                }
+            });
+            builder.show();
+
+                //edts[index].setFocusable(false);
+                //edts[index].setCursorVisible(false);
+                //edts[index].setHighlightColor(Color.WHITE);
+           /* }
+            else{
+                Log.e(""+index,"okkey");
+                //edts[index].setFocusable(true);
+                edts[index].setCursorVisible(true);
+                edts[index].setHighlightColor(Color.RED);
+            }*/
 
 
         }
